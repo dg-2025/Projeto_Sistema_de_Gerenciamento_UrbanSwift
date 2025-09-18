@@ -23,7 +23,7 @@ public class UsuarioController {
     }
 
     //Buscar por id
-    @GetMapping("/{id}")
+        @GetMapping("/{id}")
     public ResponseEntity<?> buscarUsuarioPorId(@PathVariable int id){
         Usuario usuarioExistente = usuarioService.buscarPorId(id);
         if(usuarioExistente == null){
