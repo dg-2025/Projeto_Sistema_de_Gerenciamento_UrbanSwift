@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/usuarios")
+    @RequestMapping("/api/usuarios")
 public class UsuarioController {
     private final UsuarioService usuarioService;
     public UsuarioController(UsuarioService service) {
@@ -33,10 +33,10 @@ public class UsuarioController {
     }
 
     //Adicionar
-    @PostMapping("/{id}")
+    @PostMapping
     public ResponseEntity<?> adicionarUsuario (@RequestBody Usuario novoUsuario){
         usuarioService.addUsuario(novoUsuario);
-        return ResponseEntity.badRequest().body("Usuario adicionado com sucesso");
+        return ResponseEntity.ok().body("Usuario adicionado com sucesso");
     }
 
     //Editar / Atualizar
@@ -52,7 +52,7 @@ public class UsuarioController {
     //deletar
     @DeleteMapping("/{id}")
     public ResponseEntity<?> removerUsuario(@PathVariable int id){
-        Usuario usuarioExistente = usuarioService.buscarPorId(id);
+        Usuario usuarioExistente = usuarioService.removeUsuario(id);
         if(usuarioExistente == null){
             return ResponseEntity.badRequest().body("usuario não encotrado");
         }

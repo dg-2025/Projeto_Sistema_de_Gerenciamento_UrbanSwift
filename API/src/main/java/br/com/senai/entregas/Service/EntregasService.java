@@ -35,6 +35,7 @@ public class EntregasService {
         if (entregaExitente == null) {
             return null;
         }
+        entregaExitente.setStatus(entregaAtualizada.getStatus());
         return entregasRepository.save(entregaAtualizada);
     }
 

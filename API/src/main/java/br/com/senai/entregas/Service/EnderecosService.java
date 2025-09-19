@@ -37,7 +37,7 @@ public class EnderecosService {
         if (enderecoExistente == null) {
             return null;
         }
-        endereco.setId(id);
+        enderecoExistente.setLogradouro(endereco.getLogradouro());
         return enderecosRepository.save(enderecoExistente);
     }
 

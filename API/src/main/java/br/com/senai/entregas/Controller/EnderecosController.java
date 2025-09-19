@@ -44,7 +44,7 @@ public class EnderecosController {
     //Atualizar
     @PutMapping("/{id}")
     public ResponseEntity<?> atualizarEndereco(@RequestBody Enderecos updateEndereco, @PathVariable int id) {
-        Enderecos enderecoExistente = enderecosService.buscarPorId(id);
+        Enderecos enderecoExistente = enderecosService.atualizarEndereco(id, updateEndereco);
         if (enderecoExistente == null) {
             return ResponseEntity.badRequest().body("endereco não encotrado");
         }
@@ -54,7 +54,7 @@ public class EnderecosController {
     //deletar
     @DeleteMapping("/{id}")
     public ResponseEntity<?> removerEndereco(@PathVariable int id) {
-        Enderecos  enderecoExistente = enderecosService.buscarPorId(id);
+        Enderecos  enderecoExistente = enderecosService.removerEndereco(id);
         if (enderecoExistente == null) {
             return ResponseEntity.badRequest().body("endereco não encotrado");
         }
