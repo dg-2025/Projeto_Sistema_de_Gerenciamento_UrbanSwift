@@ -51,6 +51,7 @@ public class EntregasController {
     }
 
     //Delatar
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> removerEntrega(@PathVariable int id) {
         Entregas entregasexistente = entregasService.removerEntrega(id);
         if (entregasexistente == null) {
