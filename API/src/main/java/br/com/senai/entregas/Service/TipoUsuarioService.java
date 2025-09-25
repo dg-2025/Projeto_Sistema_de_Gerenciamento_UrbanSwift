@@ -2,6 +2,7 @@ package br.com.senai.entregas.Service;
 
 import br.com.senai.entregas.Repository.TipoUsuarioRepository;
 import br.com.senai.entregas.model.TipoUsuario;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,11 @@ import java.util.List;
 public class TipoUsuarioService {
 
 
+
+
     //injeção de dependencias
     private final TipoUsuarioRepository tipoUsuarioRepository;
-    public TipoUsuarioService(TipoUsuarioRepository tipoUsuarioRepository) {
+    public TipoUsuarioService( TipoUsuarioRepository tipoUsuarioRepository) {
         this.tipoUsuarioRepository = tipoUsuarioRepository;
     }
 

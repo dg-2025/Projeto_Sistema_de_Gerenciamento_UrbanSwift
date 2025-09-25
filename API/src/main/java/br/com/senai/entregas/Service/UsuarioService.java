@@ -3,6 +3,7 @@ package br.com.senai.entregas.Service;
 import br.com.senai.entregas.Repository.UsuarioRepository;
 import br.com.senai.entregas.model.Usuario;
 import lombok.Setter;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
@@ -12,8 +13,10 @@ import java.util.List;
 public class UsuarioService {
 
     //injeção de dependencias
+    private final PasswordEncoder passwordEncoder;
     private final UsuarioRepository usuarioRepository;
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
         this.usuarioRepository = usuarioRepository;
     }
 
@@ -29,6 +32,8 @@ public class UsuarioService {
 
     //Adicionar
     public Usuario addUsuario(Usuario newUser) {
+        String senhaCriptografada = passwordEncoder.encode(newUser.getSenha());
+        newUser.setSenha( senhaCriptografada );
         return usuarioRepository.save(newUser);
     }
 
